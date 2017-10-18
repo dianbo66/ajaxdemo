@@ -36,11 +36,12 @@
   function sendAjax(){
     var xhr = new XMLHttpRequest();
     xhr.open('GET','http://www.easy-mock.com/mock/59e6b50d0cfd446fbae83a32/example/query?pageSize=5&page=' + page,true);
+    // 已可解析到，下面如何显示还得改。
     xhr.onreadystatechange = function(){
-      if(xhr.readyState === 4){
+      if(xhr.success === 1){
         isLoad = 1;
-        var data = JSON.parse(xhr.responseText);
-        if(data.status.statusCode === 1){
+        var data = JSON.parse(xhr.data);
+        console.log(data)
           var fragment = document.createDocumentFragment();
           fragment.innerHTML = "";
           for(var i = 0;i<data.data.length;i++){
@@ -51,7 +52,6 @@
           }
           document.querySelector('#newsList').appendChild(fragment);
           page += 5;
-        }else(console.log("服务器错误"))
       }
     }
     xhr.send();
