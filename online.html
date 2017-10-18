@@ -35,7 +35,7 @@
   var isLoad = 1;
   function sendAjax(){
     var xhr = new XMLHttpRequest();
-    xhr.open('GET','/getNews?pageSize=5&page=' + page,true);
+    xhr.open('GET','http://www.easy-mock.com/mock/59e6b50d0cfd446fbae83a32/example/query?pageSize=5&page=' + page,true);
     xhr.onreadystatechange = function(){
       if(xhr.readyState === 4){
         isLoad = 1;
